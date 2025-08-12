@@ -1,5 +1,5 @@
 # FastAPI Arabic Sentiment Analysis Backend
-**Author**Reema W. Alotaibi
+**Author** Reema W. Alotaibi
 This is a FastAPI backend that performs Arabic sentiment analysis using the CAMeL Lab BERT model locally with Hugging Face Transformers.
 
 ## Setup
