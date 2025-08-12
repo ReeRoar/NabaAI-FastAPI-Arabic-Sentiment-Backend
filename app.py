@@ -1,8 +1,9 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
-
+#frontend URL http://localhost:57185
 app = FastAPI()
 
 # Load model and tokenizer once at startup
@@ -32,4 +33,12 @@ def predict_sentiment(input: TextInput):
         return {"input": input.text, "sentiment": predicted_label}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+#frontend URL to avoid XMLHttpRequest failures
+origins=["*"]
+app.add_middleware (
+    CORSMiddleware,
+    allow_origins= ["*"], #allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
